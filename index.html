@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Once Human - Official Survival Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,700;0,900;1,900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cyan: #00d4ff;
+            --pink: #ff3366;
+            --bg: #050505;
+        }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--bg); 
+            color: #fff;
+            scroll-behavior: smooth;
+        }
+        .title-italic { font-style: italic; font-weight: 900; letter-spacing: -0.05em; }
+        
+        /* EFFET DÉGRADÉ SUR LE TEXTE (Fidèle à la capture d'écran) */
+        .text-gradient {
+            background: linear-gradient(to right, #00d4ff, #8a70d6, #ff3366);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+        }
+
+        .btn-cyan {
+            background-color: var(--cyan);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        .btn-cyan:hover {
+            box-shadow: 0 0 40px rgba(0, 212, 255, 0.6);
+            transform: scale(1.05);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .pulse-pink {
+            animation: pulse-pink 2s infinite;
+        }
+        @keyframes pulse-pink {
+            0% { box-shadow: 0 0 0 0 rgba(255, 51, 102, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 51, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 51, 102, 0); }
+        }
+
+        #sticky-cta {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0;
+            transform: translateY(100px) scale(0.8);
+            pointer-events: none;
+        }
+
+        #sticky-cta.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <header id="hero" class="relative h-[90vh] flex items-center justify-center overflow-hidden border-b border-white/5">
+        <video id="bgVideo" autoplay muted loop playsinline preload="auto" class="absolute inset-0 z-0 w-full h-full object-cover opacity-80">
+            <source src="assets/gameplay.mp4" type="video/mp4">
+        </video>
+        
+        <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent"></div>
+
+        <div class="relative z-10 text-center px-4">
+            <div class="inline-block bg-[#ff3366] text-white text-[10px] font-black px-3 py-1 rounded-full mb-6 pulse-pink uppercase tracking-widest">
+                Limited Time Offer — Play for Free
+            </div>
+            
+            <h1 class="text-6xl md:text-8xl title-italic uppercase mb-4">
+                ONCE <span class="text-gradient">HUMAN</span>
+            </h1>
+            
+            <p class="text-lg md:text-2xl text-gray-300 font-light max-w-2xl mx-auto mb-10 leading-tight">
+                The world has changed. Will you adapt? <br>
+                <span class="text-red-500 font-bold">Massive open-world survival. Build, craft, and conquer.</span>
+            </p>
+
+            <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
+                <a href="#download" class="btn-cyan text-black font-black px-12 py-5 rounded-xl text-xl uppercase tracking-tighter">
+                    Play Free Now
+                </a>
+                <button class="bg-white/5 hover:bg-white/10 text-white font-bold px-8 py-5 rounded-xl border border-white/10 transition-all">
+                    Watch Gameplay
+                </button>
+            </div>
+            
+            <div class="mt-8 flex justify-center gap-6 text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em]">
+                <span>Windows 10/11</span>
+                <span>•</span>
+                <span>25GB Storage</span>
+                <span>•</span>
+                <span>No CC Required</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-20 container mx-auto px-6 text-center">
+        <div class="mb-16">
+            <h2 class="text-4xl md:text-6xl title-italic uppercase mb-4">
+                Join <span class="text-gradient">Millions</span> of Survivors
+            </h2>
+            <p class="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto">
+                See why players worldwide are calling Once Human the ultimate survival experience
+            </p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20">
+            <div class="glass-card p-8 rounded-2xl text-center">
+                <div class="text-3xl font-black italic">2M+</div>
+                <div class="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Survivors</div>
+            </div>
+            <div class="glass-card p-8 rounded-2xl text-center">
+                <div class="text-3xl font-black italic text-[#00d4ff]">4.8/5</div>
+                <div class="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Steam Rating</div>
+            </div>
+            <div class="glass-card p-8 rounded-2xl text-center border-t border-t-[#ff3366]/30">
+                <div class="text-3xl font-black italic">100%</div>
+                <div class="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Free to play</div>
+            </div>
+            <div class="glass-card p-8 rounded-2xl text-center">
+                <div class="text-3xl font-black italic text-[#10b981]">FAST</div>
+                <div class="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Installation</div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="glass-card p-6 rounded-xl relative overflow-hidden">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="font-bold">Alex M.</span>
+                    <span class="text-yellow-500 text-xs">★★★★★</span>
+                </div>
+                <p class="text-sm text-gray-400 italic">"The most immersive building system in any survival game. Period."</p>
+            </div>
+            <div class="glass-card p-6 rounded-xl border-l-2 border-l-[#00d4ff]">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="font-bold">Sarah J.</span>
+                    <span class="text-yellow-500 text-xs">★★★★★</span>
+                </div>
+                <p class="text-sm text-gray-400 italic">"Can't believe this game is free. The boss fights are AAA quality."</p>
+            </div>
+            <div class="glass-card p-6 rounded-xl">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="font-bold">Mike D.</span>
+                    <span class="text-yellow-500 text-xs">★★★★★</span>
+                </div>
+                <p class="text-sm text-gray-400 italic">"Solid performance on PC. The world feels alive and dangerous."</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 bg-[#09090a]">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-8">
+                <p class="text-xs uppercase tracking-[0.3em] text-gray-400">Vitrine du gameplay</p>
+                <h2 class="text-3xl md:text-5xl font-black uppercase"></h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="rounded-2xl overflow-hidden border border-white/10 shadow-xl">
+                    <img src="assets/screenshot1.jpg" alt="Screenshot gameplay 1" class="w-full h-72 object-cover">
+                </div>
+                <div class="rounded-2xl overflow-hidden border border-white/10 shadow-xl">
+                    <img src="assets/screenshot2.jpg" alt="Screenshot gameplay 2" class="w-full h-72 object-cover">
+                </div>
+                <div class="rounded-2xl overflow-hidden border border-white/10 shadow-xl">
+                    <img src="assets/screenshot3.jpg" alt="Screenshot gameplay 3" class="w-full h-72 object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-gradient-to-b from-[#050505] to-[#0a0a0a]">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-6xl title-italic uppercase mb-12 text-center">
+                Why Play <span class="text-gradient">Once Human?</span>
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="glass-card p-6 rounded-xl hover:bg-white/5 transition-all cursor-default group">
+                    <div class="text-[#00d4ff] text-2xl mb-4 group-hover:scale-125 transition-transform">🌍</div>
+                    <h3 class="font-black text-sm uppercase mb-2">Open World</h3>
+                    <p class="text-[11px] text-gray-500 leading-tight">Explore a vast world full of loot and secrets.</p>
+                </div>
+                <div class="glass-card p-6 rounded-xl">
+                    <div class="text-[#00d4ff] text-2xl mb-4">🏠</div>
+                    <h3 class="font-black text-sm uppercase mb-2">Base Building</h3>
+                    <p class="text-[11px] text-gray-500 leading-tight">Construct your fortress anywhere on the map.</p>
+                </div>
+                <div class="glass-card p-6 rounded-xl">
+                    <div class="text-[#00d4ff] text-2xl mb-4">⚔️</div>
+                    <h3 class="font-black text-sm uppercase mb-2">Intense Combat</h3>
+                    <p class="text-[11px] text-gray-500 leading-tight">Fight mutants with a massive arsenal.</p>
+                </div>
+                <div class="glass-card p-6 rounded-xl">
+                    <div class="text-[#00d4ff] text-2xl mb-4">👥</div>
+                    <h3 class="font-black text-sm uppercase mb-2">Squad Co-op</h3>
+                    <p class="text-[11px] text-gray-500 leading-tight">Survive together with your friends.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-[#050505]">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <h2 class="text-4xl md:text-6xl title-italic uppercase mb-12 text-center">
+                Survival <span class="text-gradient">Intelligence</span>
+            </h2>
+            <div class="space-y-4">
+                <div class="glass-card p-6 rounded-xl border-l-4 border-l-[#00d4ff]">
+                    <h4 class="font-black text-white uppercase text-sm mb-2 tracking-tight">Is it really free?</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">Absolutely. Once Human is 100% Free-to-Play.</p>
+                </div>
+                <div class="glass-card p-6 rounded-xl">
+                    <h4 class="font-black text-white uppercase text-sm mb-2 tracking-tight">System requirements</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">Once Human requires Windows 10/11 (64-bit), Intel Core i5-8400 or AMD Ryzen 5 2600 processor,  RAM: 16GB, NVIDIA GTX 1060 6GB or AMD RX 580 8GB graphics card, and 90GB of free storage space, Broadband Internet Connection.</p>
+                </div>
+                <div class="glass-card p-6 rounded-xl border-l-4 border-l-[#ff3366]">
+                    <h4 class="font-black text-white uppercase text-sm mb-2 tracking-tight">Multiplayer support</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">Yes! You can form squads with up to 4 players.</p>
+                </div>
+                <div class="glass-card p-6 rounded-xl">
+                    <h4 class="font-black text-white uppercase text-sm mb-2 tracking-tight">PvP options</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">Players can choose between specialized PvE or PvP servers.</p>
+                </div>
+                <div class="glass-card p-6 rounded-xl">
+                    <h4 class="font-black text-white uppercase text-sm mb-2 tracking-tight">Update frequency</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">Weekly hotfixes and massive monthly content updates.</p>
+                </div>
+                <div class="glass-card p-6 rounded-xl">
+                    <h4 class="font-black text-white uppercase text-sm mb-2 tracking-tight">Cross-device progress</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">Progress is tied to your account across launchers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="download" class="py-32 text-center bg-black">
+        <div class="container mx-auto px-6">
+            <h2 class="text-5xl md:text-8xl title-italic uppercase mb-6">
+                Join the <span class="text-gradient">Fight</span>
+            </h2>
+            <p class="text-gray-400 mb-10 max-w-xl mx-auto">Click below to start your journey. Secure download via Steam. No hidden fees.</p>
+            
+            <a href="YOUR_LINK" class="btn-cyan text-black font-black px-16 py-6 rounded-2xl text-2xl uppercase tracking-tighter inline-block mb-8">
+                Download Now
+            </a>
+            
+            <div class="flex justify-center gap-10 opacity-50 grayscale hover:grayscale-0 transition-all">
+                <span class="text-xs font-bold italic tracking-tighter uppercase">Safe & Secure</span>
+                <span class="text-xs font-bold italic tracking-tighter uppercase text-[#00d4ff]">Steam Verified</span>
+                <span class="text-xs font-bold italic tracking-tighter uppercase">Virus Free</span>
+            </div>
+        </div>
+    </section>
+
+    <div id="sticky-cta">
+        <div class="absolute -top-7 right-0 bg-[#ff3366] text-white text-[9px] font-black px-2 py-1 rounded uppercase pulse-pink whitespace-nowrap">
+            Free Today
+        </div>
+        <a href="#download" class="btn-cyan text-black font-black px-6 py-4 rounded-xl shadow-2xl flex items-center gap-3">
+            <span class="text-sm uppercase tracking-tighter italic">Download</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+        </a>
+    </div>
+
+    <script>
+        const stickyBtn = document.getElementById('sticky-cta');
+        const heroSection = document.getElementById('hero');
+        const bgVideo = document.getElementById('bgVideo');
+
+        window.addEventListener('scroll', () => {
+            const heroHeight = heroSection.offsetHeight;
+            if (window.scrollY > (heroHeight - 100)) {
+                stickyBtn.classList.add('visible');
+            } else {
+                stickyBtn.classList.remove('visible');
+            }
+        });
+
+        // Force background video playback for browsers that require a play promise.
+        function startBackgroundVideo() {
+            if (!bgVideo) return;
+            const p = bgVideo.play();
+            if (p !== undefined) {
+                p.catch((err) => {
+                    console.warn('Video autoplay blocked, retrying after user interaction.', err);
+                });
+            }
+        }
+
+        startBackgroundVideo();
+        window.addEventListener('click', startBackgroundVideo);
+    </script>
+
+</body>
+</html>
